@@ -33,7 +33,13 @@ export class AnswerQuestionComponent {
 
     const fullChat = this.chatHistory().map(msg => ({ role: msg.role, content: msg.content }));
 
-    const response = await this.openAiService.answerQuestion(fullChat);
+    // System-Prompt aus dem lokalen Speicher abrufen
+    const systemPrompt = localStorage.getItem('systemPrompt') || '';
+
+    // Erstelle eine Nachricht, die alle vorherigen Nachrichten und den System-Prompt zusammenführt
+    const promptWithChat = [{ role: 'system', content: systemPrompt }, ...fullChat];
+
+    const response = await this.openAiService.answerQuestion(promptWithChat);
     const botAnswer = response.choices[0].message.content;
 
     this.chatHistory.update((history) => [
@@ -48,3 +54,4 @@ export class AnswerQuestionComponent {
     this.chatHistory.set([]);
   }
 }
+
