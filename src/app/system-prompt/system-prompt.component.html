@@ -1,0 +1,6 @@
+<h2>Setze den System Prompt</h2>
+<form (submit)="setPrompt()">
+  <label for="prompt">System Prompt</label>
+  <input type="text" id="prompt" name="systemPrompt" [(ngModel)]="prompt" placeholder="Geben Sie den System-Prompt hier ein" required />
+  <button type="submit">Prompt setzen</button>
+</form>

@@ -1,0 +1,32 @@
+<h2>Answer Question</h2>
+
+<ng-container *ngIf="chatHistory().length > 0">
+  <h3>Chat History</h3>
+  <ul>
+    <li *ngFor="let chat of chatHistory()">
+      <strong>{{ chat.role === 'user' ? 'You' : 'Bot' }}:</strong>
+      <br>
+      <markdown [data]="chat.content"></markdown>
+    </li>
+  </ul>
+</ng-container>
+
+
+<form (submit)="answerQuestion()">
+  <label fot="question">Question</label>
+  <div>
+    <input type="text" list="suggestion" id="question" name="Question" placeholder="Enter your Question here" [(ngModel)]="question"/>
+
+    <datalist id="suggestion">
+      <option>Are dolphin fish?</option>
+      <option>Give me a  checklist for a good body-weight training</option>
+      <option>How to make a good pizza?</option>
+      <option>What is the best way to learn a new language?</option>
+      <option>What is the easiest language</option>
+    </datalist>
+
+    <button type="submit">Answer</button>
+  </div>
+</form>
+
+<button (click)="startOver()">Clear Chat History</button>

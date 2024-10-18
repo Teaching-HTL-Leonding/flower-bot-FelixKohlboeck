@@ -1,0 +1,18 @@
+div {
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+
+a {
+  color: #333;
+  text-decoration: black;
+  text-decoration-thickness: 20px;
+  display: flex;
+  margin: 20px;
+}
